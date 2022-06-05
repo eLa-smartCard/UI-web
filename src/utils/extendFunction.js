@@ -14,13 +14,5 @@ export default class ExtendFunction {
             roman = (key[+digits.pop() + (i * 10)] || "") + roman;
         return Array(+digits.join("") + 1).join("M") + roman;
     }
-    convertDuration(duration) {
-        let formatTime = duration.replace('PM', '').replace('S', '')
-        let a = {
-            hours: formatTime.split('M')[0],
-            minutes: formatTime.split('M')[1],
-        }
-
-        return a.hours + ':' + a.minutes
-    }
+ 
 }
