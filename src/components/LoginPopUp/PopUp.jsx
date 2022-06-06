@@ -14,7 +14,7 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import clsx from 'clsx';
 
-
+import google from '../../assets/google.png'
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
@@ -72,9 +72,9 @@ const LoginForm = (props) => {
                             <div className='flex items-center flex-col'>
                                 <img src={logo} alt="" className='w-[200px] mb-4' />
                             </div>
-                            <AppBar position="static" color="default" className='border-0 shadow-none	'>
+                            <AppBar position="static" color="default" className='border-none shadow-none	' style={{ boxShadow: '0' }}>
                                 <Tabs
-                                    className='border-0	bg-white'
+                                    className='border-0	bg-white shadow-none'
                                     value={value}
                                     onChange={handleChange}
                                     indicatorColor="primary"
