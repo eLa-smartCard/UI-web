@@ -26,12 +26,10 @@ const configComponent = (component) => {
     )
 }
 let path = [
-  
     {
         path: '/',
         component: configComponent(<Home />)
     },
-  
 ]
 
 

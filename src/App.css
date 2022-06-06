@@ -1,0 +1,11 @@
+html {
+    min-height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgb(255, 87, 86);
+    background: linear-gradient(180deg, rgba(255, 87, 86, 1) 0%, rgba(254, 244, 244, 1) 0%, rgba(255, 255, 255, 0) 100%);
+}
