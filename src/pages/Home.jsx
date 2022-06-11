@@ -67,8 +67,13 @@ const Home = () => {
                         <p className='font-bold border-b-2 border-ela w-fit my-2'>BẠN CÓ THỂ XEM THÊM</p>
                     </div>
                     <div className='flex'>
-                        <div className='basis-1/3'>
+                        <div className='basis-1/3 relative'>
                             <img src={food} alt="" className='w-full'/>
+                            <div className='absolute top-0 bottom-0 left-0 right-0 w-fit text-white'>
+                                <button className='bg-white/80 rounded-md py-2 px-4 font-semibold text-black'>THỰC ĐƠN</button>
+                                <p>Toco Toco</p>
+                                <p>$100</p>
+                            </div>
                         </div>
                         <div className='basis-1/3'>
                             <img src={food} alt="" className='w-full'/>
