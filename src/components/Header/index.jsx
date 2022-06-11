@@ -45,7 +45,7 @@ const Header = () => {
                     <div>
                         <RoomIcon />
                         <select name="" id="" className='border-2 px-1 py-2 rounded-xl border-slate-400'>
-                            <option value="">Thủ đức</option>
+                            <option value="">Thủ Đức</option>
                         </select>
                     </div>
                 </div>

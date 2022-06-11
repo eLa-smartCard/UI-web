@@ -16,6 +16,8 @@ module.exports = {
                 'google':'#ff5756',
                 'facebook':'#4067a3',
                 'sidebar':'#454545',
+                'title':'#666',
+                'footer':'#dadada',
             },
             width:{
                 'logo':'200px'
