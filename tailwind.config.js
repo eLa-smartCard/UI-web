@@ -14,8 +14,16 @@ module.exports = {
                 'ela': '#f3648c',
                 'elaBg':'rgba(254, 244, 244, 1)',
                 'google':'#ff5756',
-                'facebook':'#4067a3'
+                'facebook':'#4067a3',
+                'sidebar':'#454545',
             },
+            width:{
+                'logo':'200px'
+            },
+            height:{
+                'logo':'100px'
+            },
+            
         },
     },
     plugins: [],

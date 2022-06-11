@@ -7,7 +7,7 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import PopUp from '../LoginPopUp/PopUp';
-
+import RoomIcon from '@material-ui/icons/Room';
 
 const Header = () => {
     const [showLogin, setShowLogin] = useState(false);
@@ -27,42 +27,31 @@ const Header = () => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
     return (
-        <div className={clsx('flex items-center justify-between px-6 py-4 drop-shadow-md	fixed top-0 left-0 right-0 z-10',{
-            'bg-elaBg': scrollPosition > 0,
-        })}>
-            <div className='flex items-center'>
-                <img src={logo} alt="" className='w-[120px]' />
-                {/* <p className='mx-2 font-medium text-xl'>E-Sinhvien</p> */}
+        <div className='w-full bg-white'>
+            <div className='flex items-center justify-between xl:w-[1140px] xl:max-w-full ml-auto mr-auto py-4 bg-white'>
+                <img src={logo} alt="" className='w-logo' />
+                <div className='flex items-center'>
+                    <div className='flex items-center mx-4'>
+                        <SearchIcon />
+                        <p className='mr-2 text-[#666] font-semibold text-lg'>Tìm</p>
+                        <input type="text" className='border-2 border-slate-400 px-2 py-2 rounded-xl w-[300px]' placeholder='Thương hiệu, sản phẩm...' />
+                    </div>
+                    <div>
+                        <RoomIcon />
+                        <select name="" id="" className='border-2 px-1 py-2 rounded-xl border-slate-400'>
+                            <option value="">Thủ đức</option>
+                        </select>
+                    </div>
+                </div>
+                <button className='bg-ela px-2 py-2 text-white rounded-xl' onClick={handleLogin}>Đăng nhập</button>
             </div>
-            <div className='flex items-center'>
-                <div className='flex flex-col items-center mx-4 cursor-pointer'>
-                    <p className='m-0 text-ela font-medium'>Trang chủ</p>
-                    <FiberManualRecordIcon style={{ fontSize: '10px', marginTop: '5px' }} className='text-ela' />
-                </div>
-                <div className='flex flex-col items-center  mx-4 cursor-pointer'>
-                    <p className='m-0 font-medium'>Đồ ăn</p>
-                    <FiberManualRecordIcon style={{ fontSize: '10px', marginTop: '5px' }} className='text-white' />
-                </div>
-                <div className='flex flex-col items-center  mx-4 cursor-pointer'>
-                    <p className='m-0 font-medium'>Liên hệ</p>
-                    <FiberManualRecordIcon style={{ fontSize: '10px', marginTop: '5px' }} className='text-white' />
-                </div>
-            </div>
-            <div className='flex items-center'>
-                <SearchIcon className='mx-4' style={{ fontWeight: '100', fontSize: '25px' }} />
-                <NotificationsActiveIcon className='mx-4' style={{ fontWeight: '100', fontSize: '25px' }} />
-                <div className='bg-ela py-2 px-4 rounded-3xl flex items-center cursor-pointer hover:opacity-90 hover:shadow-sm' onClick={handleLogin}>
-                    <ExitToAppIcon className='text-white' style={{ fontSize: '20px' }} />
-                    <span className='text-white font-medium text-sm'>Đăng nhập</span>
-                </div>
-                {showLogin && <PopUp showLogin={showLogin} setShowLogin={setShowLogin}/>}
-            </div>
+            {showLogin && <PopUp showLogin={showLogin} setShowLogin={setShowLogin}/>}
         </div>
     )
 }
