@@ -29,7 +29,7 @@ const Home = () => {
                     <div className='flex items-center justify-between bg-ela rounded text-white p-2 cursor-pointer mb-4'>
                         <div className='flex items-center '>
                             <CreditCardIcon className='mr-2' />
-                            <span className='font-semibold text-lg'>Thẻ E-sinhvien</span>
+                            <span className='font-semibold text-base'>Thẻ E-sinhvien</span>
                         </div>
                         <ArrowForwardIosIcon style={{ fontSize: '10px' }} />
                     </div>

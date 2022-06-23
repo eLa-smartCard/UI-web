@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div className='bg-footer py-4 text-title'>
             <div className='xl:w-[1140px] xl:max-w-full ml-auto mr-auto'>
-                <div className='flex item-center'>
+                <div className='flex item-center gap-6'>
                     <div className='basis-2/3'>
                         <img src={logo} alt="" className='w-[100px] my-1' />
                         <p className='italic'>Esinhvien là hệ thống đem đến sự kết nối giữa doanh nghiệp với sinh viên cho phép bạn tận hưởng thẻ tích điểm thông tin và nhận được những ưu đãi từ những dịch vụ bạn đã sử dụng.</p>

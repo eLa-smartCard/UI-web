@@ -20,7 +20,7 @@ module.exports = {
                 'footer':'#dadada',
             },
             width:{
-                'logo':'200px'
+                'logo':'150px'
             },
             height:{
                 'logo':'100px'

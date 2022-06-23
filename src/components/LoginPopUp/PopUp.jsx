@@ -70,7 +70,7 @@ const LoginForm = (props) => {
                     <Fade in={showLogin}>
                         <div className={clsx(classes.paper, 'text-center')}>
                             <div className='flex items-center flex-col'>
-                                <img src={logo} alt="" className='w-[200px] mb-4' />
+                                <img src={logo} alt="" className='w-logo mb-4' />
                             </div>
                             <AppBar position="static" color="default" className='border-none shadow-none	' style={{ boxShadow: '0' }}>
                                 <Tabs
