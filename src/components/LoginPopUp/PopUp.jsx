@@ -90,7 +90,7 @@ const LoginForm = (props) => {
                                 <Login />
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                <Register />
+                                <Register />        
                             </TabPanel>
                         </div>
                     </Fade>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import banner from '../assets/banner.png'
+import default_cover from '../assets/default-cover.png'
 import food from '../assets/food.jpg'
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -18,14 +18,33 @@ import RestaurantIcon from '@material-ui/icons/Restaurant';
 
 import { Sidebar, ItemSidebar } from '../components/SideBar';
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper";
+
+import ListTable from '../services/listTable';
+import ExtendFunction from '../utils/extendFunction';
 
 const Home = () => {
-
+    const listTable = new ListTable()
+    const extendFunc = new ExtendFunction()
+    const [hotSlide, setHotSlide] = useState([])
+    useEffect(async () => {
+        let listHotSlide = await listTable.getFStores()
+        console.log(listHotSlide);
+        setHotSlide(listHotSlide.data)
+    }, [])
 
     return (
         <div className='xl:w-[1140px] xl:max-w-full ml-auto mr-auto'>
-            <div className='flex flex-wrap'>
-                <div className='basis-1/4	pr-3'>
+            <div className='grid grid-cols-4'>
+                <div className='col-span-1	pr-3'>
                     <div className='flex items-center justify-between bg-ela rounded text-white p-2 cursor-pointer mb-4'>
                         <div className='flex items-center '>
                             <CreditCardIcon className='mr-2' />
@@ -43,22 +62,50 @@ const Home = () => {
                         </Sidebar>
                     </div>
                 </div>
-                <div className='basis-3/4 w-full'>
+                <div className='col-span-3 w-full'>
                     <div className='w-full flex items-center justify-between flex-col'>
                         <p className='font-bold border-b-2 border-ela w-fit my-2'>MỚI & HOT</p>
                     </div>
-                    <div className='flex max-h-[272px] overflow-hidden'>
-                        <div className='basis-3/4 '>
-                            <img src={food} alt="" className='w-full h-full object-cover' />
-                        </div>
-                        <div className='basis-1/4 flex flex-col'>
-                            <div className='basis-[50%] overflow-hidden'>
-                                <img src={food} alt="" className='w-full h-full object-cover' />
-                            </div>
-                            <div className='basis-[50%] overflow-hidden'>
-                                <img src={food} alt="" className='w-full h-full object-cover' />
-                            </div>
-                        </div>
+                    <div className=' h-[270px] w-full max-w-full'>
+                        <Swiper
+                            cssMode={true}
+                            navigation={true}
+                            pagination={true}
+                            mousewheel={true}
+                            keyboard={true}
+                            modules={[Autoplay, Pagination, Navigation]}
+                            className='w-full'
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                        >
+                            {
+                                hotSlide.map((itemHot, index) => {
+                                    return (
+                                        <SwiperSlide key={index}>
+                                            <div
+                                                className='w-full h-full relative object-cover'
+                                                style={{
+                                                    backgroundImage: `url("${itemHot.avatar}"),url("${default_cover}")`,
+                                                    backgroundPosition: 'center',
+                                                    backgroundSize: 'cover',
+                                                    backgroundRepeat: 'no-repeat'
+                                                }}
+                                            >
+                                                <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
+                                                    <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
+                                                    <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                    <p className='text-lg font-semibold'>{itemHot.name || ''}</p>
+                                                    <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                    <p>{itemHot.address || ''}</p>
+                                                </div>
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </Swiper>
                     </div>
                 </div>
             </div>

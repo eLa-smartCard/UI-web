@@ -13,6 +13,18 @@ export default class ExtendFunction {
         while (i--)
             roman = (key[+digits.pop() + (i * 10)] || "") + roman;
         return Array(+digits.join("") + 1).join("M") + roman;
+    };
+    doesImageExist = (url) =>
+        new Promise((resolve) => {
+            const img = new Image();
+
+            img.src = url;
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+        });
+    async checkImage(url){
+        let check = await this.doesImageExist(url)
+        console.log(check);
+        return check ? url : 'https://www.langf.vn/assets/images/default-cover.png'
     }
- 
 }

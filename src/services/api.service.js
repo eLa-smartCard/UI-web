@@ -1,32 +1,18 @@
-// api/axiosClient.js
-import axios from "axios";
-import queryString from "query-string";
-// Set up default config for http requests here
+import ListTable from './listTable';
 
-// Please have a look at here `https://github.com/axios/axios#request-config` for the full list of configs
+const feathers = require('@feathersjs/feathers');
+const socketio = require('@feathersjs/socketio-client');
+const ioClient = require('socket.io-client');
+const auth = require('@feathersjs/authentication-client');
+
+const socket = ioClient(global.config.LANGF_API);
+const app = feathers();
 
 
-const axiosClient = axios.create({
-    baseURL: global.config.API,
-    headers: {
-        "content-type": "application/json",
-    },
-    paramsSerializer: (params) => queryString.stringify(params),
-});
-axiosClient.interceptors.request.use(async (config) => {
-    // Handle token here ...
-    return config;
-});
-axiosClient.interceptors.response.use(
-    (response) => {
-        if (response && response.data) {
-            return response.data;
-        }
-        return response;
-    },
-    (error) => {
-        throw error;
-    }
-);
+// Setup the transport (Rest, Socket, etc.) here
+app.configure(socketio(socket));
 
-export default axiosClient;
+// Available options are listed in the "Options" section
+app.configure(auth())
+
+export default app
