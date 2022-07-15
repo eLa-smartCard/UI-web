@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import default_cover from '../assets/default-cover.png'
 import food from '../assets/food.jpg'
+import Store from '../components/Stores/Store';
+
+
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
@@ -39,9 +42,6 @@ const Home = () => {
         let listHotSlide = await listTable.getFStores()
         console.log(listHotSlide);
         setHotSlide(listHotSlide.data)
-
-        let a = await listTable.getMenu()
-        console.log(a)
     }, [])
 
     return (
@@ -167,34 +167,12 @@ const Home = () => {
                     <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
                     <hr className='border-ela border-2 w-1/2 bg-ela' />
                 </div>
-                <div className='mt-6'>
-                    <div className='w-[300px] bg-white rounded '>
-                        <div className='relative'>
-                            <img src={food} alt="" className='rounded w-full h-[200px]' />
-
-                            <img
-                                src={'https://storage.langf.vn/8q5cksbkepg7mq1pzuwto2qyw2r9dadbuy9bcxs36glmemxs9qx73zm937r6bk.png'}
-                                alt=""
-                                className='absolute top-0 left-0 ml-1 mb-1 w-10'
-                            />
-                            <p className='absolute bottom-0 left-0 bg-ela text-white p-1 m-1 rounded'>-10%</p>
-
-                        </div>
-                        <p className='text-ela font-bold'>Bún đậu mắm tôm</p>
-                        <p className='text-ela text-xs italic'>Đường Tô Vĩnh Diện (gần lẫu chay hữu duyên)</p>
-                        <div className='flex items-center'>
-                            <div>
-                                <StarIcon className='text-yellow-400' style={{ fontSize: '15px' }} />
-                                <StarIcon className='text-yellow-400' style={{ fontSize: '15px' }} />
-                                <StarIcon className='text-yellow-400' style={{ fontSize: '15px' }} />
-                                <StarIcon className='text-yellow-400' style={{ fontSize: '15px' }} />
-                                <StarBorderIcon className='text-yellow-400' style={{ fontSize: '15px' }} />
-                            </div>
-                            <div>
-                                <p className='my-0 mx-1 italic text-sm'>2 reviews</p>
-                            </div>
-                        </div>
-                    </div>
+                <div className='mt-6 flex items-center gap-3 flex-wrap'>
+                    {hotSlide.map(item => {
+                        return (
+                            <Store props={{infoStore:item}}/>
+                        )
+                    })}
                 </div>
             </div>
             <div className='my-4'>
