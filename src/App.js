@@ -8,6 +8,7 @@ import './App.css';
 import React from 'react';
 //pages
 import Home from './pages/Home'
+import Menu from './pages/Menu'
 // const component
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -29,6 +30,10 @@ let path = [
     {
         path: '/',
         component: configComponent(<Home />)
+    },
+    {
+        path: '/stores/:slug',
+        component: configComponent(<Menu />)
     },
 ]
 

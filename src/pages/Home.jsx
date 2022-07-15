@@ -39,6 +39,9 @@ const Home = () => {
         let listHotSlide = await listTable.getFStores()
         console.log(listHotSlide);
         setHotSlide(listHotSlide.data)
+
+        let a = await listTable.getMenu()
+        console.log(a)
     }, [])
 
     return (
