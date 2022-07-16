@@ -33,7 +33,7 @@ const Header = () => {
         };
     }, []);
     return (
-        <div className='w-full bg-white'>
+        <div className='w-full bg-white fixed top-0 left-0 z-[1]' >
             <div className='flex items-center justify-between xl:w-[1140px] xl:max-w-full ml-auto mr-auto py-4 bg-white'>
                 <img src={logo} alt="" className='w-logo' />
                 <div className='flex items-center'>

@@ -45,7 +45,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div className='xl:w-[1140px] xl:max-w-full ml-auto mr-auto'>
+        <div className='xl:w-[1140px] xl:max-w-full ml-auto mr-auto mt-24'>
             <div className='grid grid-cols-4'>
                 <div className='col-span-1	pr-3'>
                     <div className='flex items-center justify-between bg-ela rounded text-white p-2 cursor-pointer mb-4'>
