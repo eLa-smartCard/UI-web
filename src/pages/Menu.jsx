@@ -9,8 +9,10 @@ const Menu = () => {
 
     useEffect(async () => {
         let infoStores = (await listTable.getInfoStoresBySlug(slug)).data[0]
-        let listMenu = await listTable.getMenu(infoStores._id)
-        console.log(listMenu);
+        let listMenus = await listTable.getMenu(infoStores._id)
+        let listReviews = await listTable.getReviews(infoStores._id)
+        // console.log({listMenus,infoStores});
+        console.log(listReviews);
     }, [])
     return (
         <div>

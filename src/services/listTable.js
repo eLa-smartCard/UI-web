@@ -10,7 +10,11 @@ app.authenticate({
 export default class ListTable {
     async getFStores() {
         const fstoreService = await app.service('fstores');
-        const result = await fstoreService.find();
+        const result = await fstoreService.find({
+            query: {
+                $limit: 100
+            }
+        });
         return result;
     }
     async getMenu(id) {
@@ -51,5 +55,35 @@ export default class ListTable {
                 slug: slug
             }
         })
+    }
+    async getInfoUserById(_id) {
+        return await app.service('users').find({
+            query: {
+                _id
+            }
+        })
+    }
+    async findReviews(idStore) {
+        return await app.service('reviews').find({
+            query: {
+                fstore: idStore
+            }
+        })
+    }
+    async getReviews(idStore) {
+        let list = (await this.findReviews(idStore)).data
+        let listReviews = []
+        for (let i = 0; i < list.length; i++) {
+            let infoUser =(await this.getInfoUserById(list[i].user)).data[0]
+            // console.log(infoUser);
+            listReviews.push({
+                email:infoUser.email,
+                name: infoUser.name,
+                isEMember:infoUser.isEMember,
+                content: list[i].content,
+                createdAt: list[i].createdAt
+            })
+        }
+        return listReviews
     }
 }
