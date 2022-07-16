@@ -6,10 +6,10 @@ import default_cover from '../assets/default-cover.png'
 
 const useStyles = makeStyles({
     root: {
-      width: '370px',
-      height: '370px',
+        width: '370px',
+        height: '370px',
     }
-  });
+});
 
 const Menu = () => {
     const classes = useStyles();
@@ -17,29 +17,32 @@ const Menu = () => {
     const listTable = new ListTable()
     const [info, setInfo] = useState({})
     const [listItems, setListItems] = useState([])
+    const [reviews, setReviews] = useState([])
     useEffect(async () => {
         let infoStores = (await listTable.getInfoStoresBySlug(slug)).data[0]
-        let listMenu = await listTable.getMenu(infoStores._id)
+        let listMenus = await listTable.getMenu(infoStores._id)
+        let listReviews = await listTable.getReviews(infoStores._id)
+        console.log(listReviews);
         setInfo(infoStores)
-        setListItems(listMenu)
+        setListItems(listMenus)
+        setReviews(listReviews)
     }, [])
 
     const [show, setShow] = useState(true)
     const handleShow = () => {
         setShow(!show);
     }
-    console.log(info);
     return (
         <div>
             <div className='relative w-full h-80 m-0 z-0'>
                 <img className='w-full h-full object-cover' src={info.avatar} alt="" />
             </div>
-            <div className='max-w-5xl grid grid-cols-[4fr_9fr_7fr] mx-auto mb-6 md:flex md:flex-col md:items-center'>
-                <div className='relative w-[170px] h-[170px] p-2 mx-6 mt-[-50%] rounded-xl overflow-hidden shadow-lg bg-white
-                md:w-[370px] md:h-[370px] md:mt-[-30%]'>
+            <div className='md:max-w-5xl md:grid md:grid-cols-[4fr_9fr_7fr] md:mx-auto md:mb-6 flex flex-col items-center'>
+                <div className='relative md:w-[170px] md:h-[170px] p-2 md:mx-6 md:mt-[-50%] rounded-xl overflow-hidden shadow-lg bg-white
+                w-[370px] h-[370px] mt-[-25%]'>
                     <img className='w-full h-full rounded-md object-cover' src={info.avatar} alt="" />
                 </div>
-                <div className='mx-6 md:text-center'>
+                <div className='mx-6 text-center md:text-left'>
                     <h1 className='text-xl font-semibold text-[#f3648c] my-3'>{info.name}</h1>
                     <div className=''>
                         <span className='min-w-150px py-1 px-4 bg-[#388e3c] rounded-[25px] text-sm text-white'>Khu vực khác</span>
@@ -54,7 +57,7 @@ const Menu = () => {
                     </a>
                 </div>
             </div>
-            <div className='max-w-5xl grid grid-cols-[7fr_3fr] mx-auto mb-6 md:flex md:flex-col md:max-w-xl'>
+            <div className='md:max-w-5xl md:grid md:grid-cols-[7fr_3fr] mx-auto md:mb-6 flex flex-col max-w-xl'>
                 {
                     show ?
                         (
@@ -116,28 +119,23 @@ const Menu = () => {
                                 </div>
                                 <div className='mt-6'>
                                     <div className='border-[1px] border-solid border-[#00000020] px-6 py-1 first:rounded-t last:rounded-b'>
-                                        <ul className='m-0 p-0'>
-                                            <li className='flex flex-row mt-6 py-3 border-y'>
-                                                <div className='px-2 py-1 w-6 h-6 flex items-center justify-center bg-[#f57f17] rounded text-white text-sm'>5</div>
-                                                <div className='ml-4 text-[#212529]'>
-                                                    <h4 className='text-sm'>Chất lượng ok, mỗi tội quán hơi chìm nên khó tìm ạ</h4>
-                                                    <span className='text-xs italic font-light'>Đánh giá bởi Thanh Thanh</span>
-                                                </div>
-                                            </li>
-                                            <li className='flex flex-row mt-6 py-3 border-y'>
-                                                <div className='px-2 py-1 w-6 h-6 flex items-center justify-center bg-[#f57f17] rounded text-white text-sm'>5</div>
-                                                <div className='ml-4 text-[#212529]'>
-                                                    <h4 className='text-sm'>Chất lượng ok, mỗi tội quán hơi chìm nên khó tìm ạ</h4>
-                                                    <span className='text-xs italic font-light'>Đánh giá bởi Thanh Thanh</span>
-                                                </div>
-                                            </li>
-                                            <li className='flex flex-row mt-6 py-3 border-y'>
-                                                <div className='px-2 py-1 w-6 h-6 flex items-center justify-center bg-[#f57f17] rounded text-white text-sm'>5</div>
-                                                <div className='ml-4 text-[#212529]'>
-                                                    <h4 className='text-sm'>Chất lượng ok, mỗi tội quán hơi chìm nên khó tìm ạ</h4>
-                                                    <span className='text-xs italic font-light'>Đánh giá bởi Thanh Thanh</span>
-                                                </div>
-                                            </li>
+                                        <ul className='m-0 p-2'>
+                                            {
+                                                reviews.length > 0 ?
+                                                    (
+                                                        <li className='flex flex-row mt-6 py-2 border-y'>
+                                                            <div className='px-2 py-1 w-6 h-6 flex items-center justify-center bg-[#f57f17] rounded text-white text-sm'>5</div>
+                                                            <div className='ml-4 text-[#212529]'>
+                                                                <h4 className='text-sm'>Chất lượng ok, mỗi tội quán hơi chìm nên khó tìm ạ</h4>
+                                                                <span className='text-xs italic font-light'>Đánh giá bởi Thanh Thanh</span>
+                                                            </div>
+                                                        </li>
+                                                    )
+                                                    :
+                                                    (
+                                                        <span className='text-sm italic font-light'>Chưa có review nào?</span>
+                                                    )
+                                            }
                                         </ul>
                                     </div>
                                     <div className='mt-6 text-center'>
@@ -147,10 +145,8 @@ const Menu = () => {
                             </div>
                         )
                 }
-                <div className='px-4 md:mt-4'>
-                    <div className="relative bg-[#f3648c] text-white font-medium text-sm px-4 py-2 
-                    before:content-[''] before:absolute  before:inset-0 before:w-3 before:border-x-[15px] before:border-y-[18px] before:left-[-11%] md:before:left-[-30px] before:border-t-transparent before:border-l-transparent before:border-b-transparent before:border-r-[#f3648c]
-                    after:content-[''] after:absolute  after:top-0 after:w-3 after:border-x-[15px] after:border-y-[18px] after:right-[-11%] md:after:right-[-30px] after:border-t-transparent after:border-r-transparent after:border-b-transparent after:border-l-[#f3648c]">
+                <div className='px-4 mt-4 md:mt-0'>
+                    <div className="relative bg-[#f3648c] text-white font-medium text-sm px-6 py-4 md:px-4 md:py-2 rounded">
                         <span>7h - 22h: giảm 30%, 22h -7h: giảm 10%</span>
                     </div>
                     <div className='pt-6'>
