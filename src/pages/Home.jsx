@@ -3,7 +3,6 @@ import default_cover from '../assets/default-cover.png'
 import food from '../assets/food.jpg'
 import Store from '../components/Stores/Store';
 
-
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
@@ -37,11 +36,16 @@ import ExtendFunction from '../utils/extendFunction';
 const Home = () => {
     const listTable = new ListTable()
     const extendFunc = new ExtendFunction()
+
     const [hotSlide, setHotSlide] = useState([])
+    const [eMemberStores, setEMemberStores] = useState([])
     useEffect(async () => {
         let listHotSlide = await listTable.getFStores()
-        console.log(listHotSlide);
         setHotSlide(listHotSlide.data)
+
+        let listEMemberStores = await listTable.getEmemberStores()
+        console.log({ listHotSlide, listEMemberStores });
+        setEMemberStores(listEMemberStores.data)
     }, [])
 
     return (
@@ -178,10 +182,62 @@ const Home = () => {
 
             <div className='my-4'>
                 <div className='w-fit'>
+                    <p className='text-title font-bold text-xl w-fit'>Quán E-Member</p>
+                    <hr className='border-ela border-2 w-1/2 bg-ela' />
+                </div>
+                <div className=' h-[200px] w-full max-w-full mt-6'>
+                    <Swiper
+                        cssMode={true}
+                        navigation={true}
+                        slidesPerView={3}
+                        spaceBetween={30}
+                        slidesPerGroup={3}
+                        loop={true}
+                        loopFillGroupWithBlank={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        modules={[Autoplay, Pagination, Navigation]}
+                        className="mySwiper"
+                        // autoplay={{
+                        //     delay: 2500,
+                        //     disableOnInteraction: false,
+                        // }}
+                    >
+                        {
+                            eMemberStores.map((itemHot, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div
+                                            className='w-full h-full relative object-cover'
+                                            style={{
+                                                backgroundImage: `url("${itemHot.avatar}"),url("${default_cover}")`,
+                                                backgroundPosition: 'center',
+                                                backgroundSize: 'cover',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}
+                                        >
+                                            <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
+                                                <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
+                                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                <p className='text-lg font-semibold'>{itemHot.name || ''}</p>
+                                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                <p>{itemHot.address || ''}</p>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+                    </Swiper>
+                </div>
+            </div>
+            <div className='my-4'>
+                <div className='w-fit'>
                     <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
                     <hr className='border-ela border-2 w-1/2 bg-ela' />
                 </div>
-                <div className='mt-6 flex items-center gap-3 flex-wrap'>
+                <div className='mt-6 flex items-center justify-evenly gap-3 flex-wrap'>
                     {hotSlide.map(item => {
                         return (
                             <Store props={{ infoStore: item }} />
