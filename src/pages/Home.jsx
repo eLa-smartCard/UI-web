@@ -237,7 +237,7 @@ const Home = () => {
                     <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
                     <hr className='border-ela border-2 w-1/2 bg-ela' />
                 </div>
-                <div className='mt-6 flex items-center justify-evenly gap-3 flex-wrap'>
+                <div className='mt-6 flex items-center mx-auto relative  gap-3 flex-wrap'>
                     {hotSlide.map(item => {
                         return (
                             <Store props={{ infoStore: item }} />
