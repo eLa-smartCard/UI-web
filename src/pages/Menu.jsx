@@ -43,7 +43,7 @@ const Menu = () => {
                     <img className='w-full h-full rounded-md object-cover' src={info.avatar} alt="" />
                 </div>
                 <div className='mx-6 text-center md:text-left'>
-                    <h1 className='text-xl font-semibold text-[#f3648c] my-3'>{info.name}</h1>
+                    <h1 className='text-xl font-semibold text-ela my-3'>{info.name}</h1>
                     <div className=''>
                         <span className='min-w-150px py-1 px-4 bg-[#388e3c] rounded-[25px] text-sm text-white'>Khu vực khác</span>
                     </div>
@@ -53,7 +53,7 @@ const Menu = () => {
                         <span className='bg-[#0097a7] p-1 text-white rounded'>
                             <svg data-v-7266ac5c="" viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img" aria-label="map" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi-map b-icon bi"><g data-v-7266ac5c=""><path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"></path></g></svg>
                         </span>
-                        <span className='text-sm text-[#ff5656] mx-2 overflow-hidden' style={{ "display": "-webkit-box", "WebkitBoxOrient": "vertical", "WebkitLineClamp": "1" }}>{info.address}</span>
+                        <span className='text-sm text-ela mx-2 overflow-hidden' style={{ "display": "-webkit-box", "WebkitBoxOrient": "vertical", "WebkitLineClamp": "1" }}>{info.address}</span>
                     </a>
                 </div>
             </div>
@@ -63,10 +63,10 @@ const Menu = () => {
                         (
                             <div className='px-4'>
                                 <div className='flex flex-row'>
-                                    <button className='min-w-[90px] bg-[#ff5656] text-sm text-white px-4 py-2 rounded mr-2'
+                                    <button className='min-w-[90px] bg-ela text-sm text-white px-4 py-2 rounded mr-2'
                                         onClick={handleShow}
                                     >Thực đơn</button>
-                                    <button className='min-w-[90px] bg-white text-[#ff5656] text-sm px-4 py-2 rounded hover:text-[#ff0a0a]'
+                                    <button className='min-w-[90px] bg-white text-ela text-sm px-4 py-2 rounded hover:text-[#ff0a0a]'
                                         onClick={handleShow}
                                     >Review</button>
                                 </div>
@@ -110,10 +110,10 @@ const Menu = () => {
                         (
                             <div className='px-4'>
                                 <div className='flex flex-row'>
-                                    <button className='min-w-[90px]  bg-white text-[#ff5656] text-sm px-4 py-2 rounded hover:text-[#ff0a0a]'
+                                    <button className='min-w-[90px]  bg-white text-ela text-sm px-4 py-2 rounded hover:text-[#ff0a0a]'
                                         onClick={handleShow}
                                     >Thực đơn</button>
-                                    <button className='min-w-[90px] bg-[#ff5656] text-sm text-white px-4 py-2 rounded mr-2'
+                                    <button className='min-w-[90px] bg-ela text-sm text-white px-4 py-2 rounded mr-2'
                                         onClick={handleShow}
                                     >Review</button>
                                 </div>
@@ -139,14 +139,14 @@ const Menu = () => {
                                         </ul>
                                     </div>
                                     <div className='mt-6 text-center'>
-                                        <button className='min-w-[90px] bg-[#ff5656] text-sm text-white px-4 py-2 rounded mr-2'>REVIEW NGAY</button>
+                                        <button className='min-w-[90px] bg-ela text-sm text-white px-4 py-2 rounded mr-2'>REVIEW NGAY</button>
                                     </div>
                                 </div>
                             </div>
                         )
                 }
                 <div className='px-4 mt-4 md:mt-0'>
-                    <div className="relative bg-[#f3648c] text-white font-medium text-sm px-6 py-4 md:px-4 md:py-2 rounded">
+                    <div className="relative bg-ela text-white font-medium text-sm px-6 py-4 md:px-4 md:py-2 rounded">
                         <span>7h - 22h: giảm 30%, 22h -7h: giảm 10%</span>
                     </div>
                     <div className='pt-6'>
