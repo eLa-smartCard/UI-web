@@ -114,8 +114,8 @@ const Home = () => {
             </div>
 
 
-            <div className='flex mt-3'>
-                <div className='basis-1/4 pr-2'>
+            <div className='grid grid-cols-4 mt-3'>
+                <div className='col-span-1	pr-3'>
                     <Sidebar label='KHÁM PHÁ'>
                         <ItemSidebar title='Về chúng tôi' icon={<PersonIcon />} />
                         <ItemSidebar title='Đối tác' icon={<GroupIcon />} />
@@ -123,41 +123,55 @@ const Home = () => {
                         <ItemSidebar title='Khuyến mãi' icon={<FastfoodIcon />} />
                     </Sidebar>
                 </div>
-                <div className='basis-3/4 w-full'>
-                    <div className='w-full flex items-center justify-between flex-col'>
+                <div className='col-span-3 w-full'>
+                    {/* <div className='w-full flex items-center justify-between flex-col'>
                         <p className='font-bold border-b-2 border-ela w-fit my-2'>BẠN CÓ THỂ XEM THÊM</p>
-                    </div>
-                    <div className='flex'>
-                        <div className='basis-1/3 relative'>
-                            <img src={food} alt="" className='w-full' />
-                            <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
-                                <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p className='text-lg font-semibold'>Toco Toco</p>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p>$100</p>
-                            </div>
-                        </div>
-                        <div className='basis-1/3 relative'>
-                            <img src={food} alt="" className='w-full' />
-                            <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
-                                <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p className='text-lg font-semibold'>Toco Toco</p>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p>$100</p>
-                            </div>
-                        </div>
-                        <div className='basis-1/3 relative'>
-                            <img src={food} alt="" className='w-full' />
-                            <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
-                                <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p className='text-lg font-semibold'>Toco Toco</p>
-                                <hr className='bg-white w-1/3 my-1 border-[1px]' />
-                                <p>$100</p>
-                            </div>
-                        </div>
+                    </div> */}
+                    <div className=' h-[200px] w-full max-w-full'>
+                        <Swiper
+                            cssMode={true}
+                            navigation={true}
+                            slidesPerView={3}
+                            spaceBetween={30}
+                            slidesPerGroup={3}
+                            loop={true}
+                            loopFillGroupWithBlank={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            modules={[Autoplay, Pagination, Navigation]}
+                            className="mySwiper"
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
+                        >
+                            {
+                                hotSlide.map((itemHot, index) => {
+                                    return (
+                                        <SwiperSlide key={index}>
+                                            <div
+                                                className='w-full h-full relative object-cover'
+                                                style={{
+                                                    backgroundImage: `url("${itemHot.avatar}"),url("${default_cover}")`,
+                                                    backgroundPosition: 'center',
+                                                    backgroundSize: 'cover',
+                                                    backgroundRepeat: 'no-repeat'
+                                                }}
+                                            >
+                                                {/* <div className='absolute top-0 bottom-0 left-0 right-0   text-white bg-black/25 flex items-center justify-center flex-col'>
+                                                    <button className='bg-white/80 rounded-md py-2 px-4 font-bold text-black'>THỰC ĐƠN</button>
+                                                    <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                    <p className='text-lg font-semibold'>{itemHot.name || ''}</p>
+                                                    <hr className='bg-white w-1/3 my-1 border-[1px]' />
+                                                    <p>{itemHot.address || ''}</p>
+                                                </div> */}
+                                            </div>
+                                        </SwiperSlide>
+                                    )
+                                })
+                            }
+                        </Swiper>
                     </div>
                 </div>
             </div>
@@ -170,7 +184,7 @@ const Home = () => {
                 <div className='mt-6 flex items-center gap-3 flex-wrap'>
                     {hotSlide.map(item => {
                         return (
-                            <Store props={{infoStore:item}}/>
+                            <Store props={{ infoStore: item }} />
                         )
                     })}
                 </div>
