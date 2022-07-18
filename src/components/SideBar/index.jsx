@@ -6,7 +6,7 @@ export const Sidebar = ({ label, children }) => {
 
 
     return (
-        <div className=' rounded cursor-pointer bg-white'>
+        <div className='md:rounded cursor-pointer bg-white'>
             <p className='font-bold text-sm mx-4 py-2'>{label}</p>
             <hr className='w-full' />
             <div>
