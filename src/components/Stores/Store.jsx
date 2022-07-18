@@ -8,7 +8,7 @@ const Store = ({ props }) => {
     const { infoStore } = props
 
     return (
-        <Link to={'/stores/'+infoStore.slug} className='w-[260px] bg-white rounded '>
+        <Link to={'/stores/'+infoStore.slug} className='w-[260px] bg-white rounded my-2'>
             <div className='relative'>
                 <div className='rounded w-full h-[200px] min-h-[200px]'
                     style={{

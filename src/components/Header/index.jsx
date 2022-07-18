@@ -34,7 +34,7 @@ const Header = () => {
         };
     }, []);
     return (
-        <div className='w-full bg-white fixed top-0 left-0 z-[1]' >
+        <div className='w-full bg-white fixed top-0 left-0 z-10' >
             <div className='flex items-center justify-between xl:w-[1140px] xl:max-w-full ml-auto mr-auto py-4 bg-white'>
                 <img src={logo} alt="" className='w-logo cursor-pointer' onClick={()=> navigate("/", { replace: true })}/>
                 <div className='flex items-center'>
@@ -50,7 +50,8 @@ const Header = () => {
                         </select>
                     </div>
                 </div>
-                <button className='bg-ela px-2 py-2 text-white rounded' onClick={handleLogin}>Đăng nhập</button>
+                {/* <button className='bg-ela px-2 py-2 text-white rounded' onClick={handleLogin}>Đăng nhập</button> */}
+                <a href='https://www.esinhvien.vn/dang-nhap' target='blank' className='bg-ela px-2 py-2 text-white rounded'>Đăng nhập</a>
             </div>
             {showLogin && <PopUp showLogin={showLogin} setShowLogin={setShowLogin}/>}
         </div>
