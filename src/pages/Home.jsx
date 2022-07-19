@@ -253,10 +253,31 @@ const Home = () => {
                         })}
                     </div>
                 </div>
-                <div className='my-4'>
-                    <div className='w-fit'>
-                        <p className='text-title font-bold text-xl w-fit'>THƯƠNG HIỆU NỔI BẬT</p>
-                        <hr className='border-ela border-2 w-1/2 bg-ela' />
+
+            </div>
+
+            <div className='my-4'>
+                <div className='w-fit'>
+                    <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
+                    <hr className='border-ela border-2 w-1/2 bg-ela' />
+                </div>
+                <div className='mt-6 flex items-center mx-auto relative flex-wrap'>
+                    {hotSlide.map(item => {
+                        return (
+                            <Store props={{infoStore:item}}/>
+                        )
+                    })}
+                </div>
+            </div>
+            <div className='my-4'>
+                <div className='w-fit'>
+                    <p className='text-title font-bold text-xl w-fit'>THƯƠNG HIỆU NỔI BẬT</p>
+                    <hr className='border-ela border-2 w-1/2 bg-ela' />
+                </div>
+                <div className='flex items-center flex-wrap my-4'>
+                    <div className='px-10 py-2 bg-white w-[150px] rounded mx-2'>
+                        <img src={'https://img.jamja.vn/jamja-prod/gcs_thumb_w_59bcb94076ec5777fc198027-2017-09-16-054019.png?h=100'} alt="" className='' />
+
                     </div>
                     <div className='flex items-center flex-wrap my-4'>
                         <div className='px-10 py-2 bg-white w-[150px] rounded mx-2'>
