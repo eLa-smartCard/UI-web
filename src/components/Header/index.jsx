@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import PopUp from '../LoginPopUp/PopUp';
 import RoomIcon from '@material-ui/icons/Room';
 
+
 import { Sidebar, ItemSidebar } from '../../components/SideBar';
 
 import EmojiFoodBeverageIcon from '@material-ui/icons/EmojiFoodBeverage';
@@ -22,7 +23,10 @@ import PersonIcon from '@material-ui/icons/Person';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import StarsIcon from '@material-ui/icons/Stars';
 
+import { useNavigate } from 'react-router-dom';
+
 const Header = () => {
+    const navigate = useNavigate();
     const [showLogin, setShowLogin] = useState(false);
     const [showSideBar, setShowSideBar] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -66,6 +70,7 @@ const Header = () => {
                         </select>
                     </div>
                 </div>
+
                 <button className='hidden md:block md:bg-ela md:px-2 md:py-2 md:text-white md:rounded' onClick={handleLogin}>Đăng nhập</button>
                 <div className='md:hidden relative'>
                     <span className='text-sm cursor-pointer mr-4 text-ela' onClick={handleLogin}>Đăng nhập</span>

@@ -16,7 +16,7 @@ import Footer from './components/Footer'
 
 const configComponent = (component) => {
     return (
-        <div className='bg-white'>
+        <div className=''>
             <Header />
             <div className="mb-[60px]">
                 {component}

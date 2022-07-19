@@ -8,6 +8,7 @@ const Store = ({ props }) => {
     const { infoStore } = props
 
     return (
+
         <div className='basis-1/4 relative p-3'>
             <Link to={'/stores/' + infoStore.slug} className=' bg-white rounded shadow-md'>
                 <div className='relative'>
