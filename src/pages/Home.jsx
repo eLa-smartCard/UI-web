@@ -245,10 +245,10 @@ const Home = () => {
                         <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
                         <hr className='border-ela border-2 w-1/2 bg-ela' />
                     </div>
-                    <div className='mt-6 flex items-center mx-auto relative  md:gap-3 flex-wrap'>
+                    <div className='mt-6 mx-auto relative  md:gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                         {stores.map(item => {
                             return (
-                                <Store props={{ infoStore: item }} />
+                                <Store infoStore={item} className='col-span-1'/>
                             )
                         })}
                     </div>
