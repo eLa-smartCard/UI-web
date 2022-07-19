@@ -3,12 +3,15 @@ import food from '../../assets/food.jpg'
 import default_cover from '../../assets/default-cover.png'
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import {Link} from 'react-router-dom'
-const Store = ({ props }) => {
-    const { infoStore } = props
-
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
+const Store = ({ infoStore, className }) => {
+    // const {  } = props
+    useEffect(() => {
+        // console.log(props);
+    }, [])
     return (
-        <Link to={'/stores/'+infoStore.slug} className='w-[260px] bg-white rounded my-2'>
+        <Link to={'/stores/' + infoStore.slug} className='w-full bg-white rounded my-2'>
             <div className='relative'>
                 <div className='rounded w-full h-[200px] min-h-[200px]'
                     style={{
