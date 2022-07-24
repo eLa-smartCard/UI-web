@@ -8,11 +8,23 @@ app.authenticate({
 })
 
 export default class ListTable {
+    async getEmemberStores(){
+        const fstoreService = await app.service('fstores');
+        const result = await fstoreService.find({
+            query: {
+                $limit: 20,
+                isshow:true,
+                isparter:true,
+            }
+        });
+        return result;
+    }
     async getFStores() {
         const fstoreService = await app.service('fstores');
         const result = await fstoreService.find({
             query: {
-                $limit: 100
+                $limit: 10,
+                isShow:true
             }
         });
         return result;
@@ -86,4 +98,5 @@ export default class ListTable {
         }
         return listReviews
     }
+    async
 }
