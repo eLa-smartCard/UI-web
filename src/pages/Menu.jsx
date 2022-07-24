@@ -35,12 +35,27 @@ const Menu = () => {
     return (
         <div>
             <div className='relative w-full h-80 m-0 z-0'>
-                <img className='w-full h-full object-cover' src={info.avatar} alt="" />
+                <div className='w-full h-full rounded-md object-cover'
+                    style={{
+                        backgroundImage: `url("${info.avatar}"),url("${default_cover}")`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                    }}
+                ></div>
             </div>
             <div className='md:max-w-5xl md:grid md:grid-cols-[4fr_9fr_7fr] md:mx-auto md:mb-6 flex flex-col items-center'>
                 <div className='relative md:w-[170px] md:h-[170px] p-2 md:mx-6 md:mt-[-50%] rounded-xl overflow-hidden shadow-lg bg-white
-                w-[370px] h-[370px] mt-[-25%]'>
-                    <img className='w-full h-full rounded-md object-cover' src={info.avatar} alt="" />
+                w-[270px] h-[270px] mt-[-25%]'>
+                    {/* <img className='w-full h-full rounded-md object-cover' src={info.avatar} alt="" /> */}
+                    <div className='w-full h-full rounded-md object-cover'
+                        style={{
+                            backgroundImage: `url("${info.avatar}"),url("${default_cover}")`,
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat'
+                        }}
+                    ></div>
                 </div>
                 <div className='mx-6 text-center md:text-left'>
                     <h1 className='text-xl font-semibold text-ela my-3'>{info.name}</h1>
