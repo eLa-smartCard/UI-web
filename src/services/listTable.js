@@ -8,13 +8,13 @@ app.authenticate({
 })
 
 export default class ListTable {
-    async getEmemberStores(){
+    async getEmemberStores() {
         const fstoreService = await app.service('fstores');
         const result = await fstoreService.find({
             query: {
                 $limit: 20,
-                isshow:true,
-                isparter:true,
+                isshow: true,
+                isparter: true,
             }
         });
         return result;
@@ -24,7 +24,7 @@ export default class ListTable {
         const result = await fstoreService.find({
             query: {
                 $limit: 10,
-                isShow:true
+                isShow: true
             }
         });
         return result;
@@ -75,6 +75,13 @@ export default class ListTable {
             }
         })
     }
+    async getInfoStoreById(_id) {
+        return await app.service('fstores').find({
+            query: {
+                _id
+            }
+        })
+    }
     async findReviews(idStore) {
         return await app.service('reviews').find({
             query: {
@@ -86,17 +93,38 @@ export default class ListTable {
         let list = (await this.findReviews(idStore)).data
         let listReviews = []
         for (let i = 0; i < list.length; i++) {
-            let infoUser =(await this.getInfoUserById(list[i].user)).data[0]
+            let infoUser = (await this.getInfoUserById(list[i].user)).data[0]
             // console.log(infoUser);
             listReviews.push({
-                email:infoUser.email,
+                email: infoUser.email,
                 name: infoUser.name,
-                isEMember:infoUser.isEMember,
+                isEMember: infoUser.isEMember,
                 content: list[i].content,
                 createdAt: list[i].createdAt
             })
         }
         return listReviews
     }
-    async
+    async getLatestReviews() {
+        let list = []
+        list = (await app.service('reviews').find({
+            query: {
+                content: { $nin: [''] },
+                $limit: 6,
+                $sort: { createdAt: -1 }
+            }
+        })).data
+        return await Promise.all(list.map(async (review, index) => {
+            let user = (await this.getInfoUserById(review.user)).data[0]
+            let fstore = (await this.getInfoStoreById(review.fstore)).data[0]
+            // console.log({ user, fstore });
+            return {
+                content: review.content,
+                rating: review.rating,
+                name_user: user.name || user.email,
+                name_store: fstore.name
+            }
+
+        }))
+    }
 }

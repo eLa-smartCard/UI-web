@@ -29,19 +29,20 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper";
+import { Autoplay, Pagination, Navigation, A11y } from "swiper";
 
 import ListTable from '../services/listTable';
 import ExtendFunction from '../utils/extendFunction';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
-
+import Review from '../components/review/Review';
 const Home = () => {
     const listTable = new ListTable()
     const extendFunc = new ExtendFunction()
 
     const [stores, setStores] = useState([])
     const [eMemberStores, setEMemberStores] = useState([])
+    const [reviews, setReviews] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(async () => {
@@ -52,6 +53,9 @@ const Home = () => {
         console.log({ listHotSlide, listEMemberStores });
         setEMemberStores(listEMemberStores.data)
 
+        let listReviews = await listTable.getLatestReviews()
+        setReviews(listReviews)
+        // console.log(listReviews);
         setLoading(false)
     }, [])
 
@@ -84,15 +88,15 @@ const Home = () => {
                         <div className=' h-[270px] w-full max-w-full'>
                             <Swiper
                                 cssMode={true}
-                                navigation={true}
+                                // navigation={true}
                                 pagination={true}
                                 mousewheel={true}
                                 keyboard={true}
-                                modules={[Autoplay, Pagination, Navigation]}
+                                modules={[Autoplay, Pagination, Navigation, A11y]}
                                 className='w-full'
                                 autoplay={{
                                     delay: 2500,
-                                    disableOnInteraction: false,
+                                    // disableOnInteraction: false,
                                 }}
                             >
                                 {
@@ -142,7 +146,7 @@ const Home = () => {
                         <div className=' h-[200px] w-full max-w-full'>
                             <Swiper
                                 cssMode={true}
-                                navigation={true}
+                                // navigation={true}
                                 slidesPerView={window.innerWidth < 400 ? 1 : (window.innerWidth > 640 ? 3 : 2)}
                                 spaceBetween={30}
                                 loop={true}
@@ -154,7 +158,7 @@ const Home = () => {
                                 className="mySwiper"
                                 autoplay={{
                                     delay: 2500,
-                                    disableOnInteraction: false,
+                                    // disableOnInteraction: false,
                                 }}
                             >
                                 {
@@ -190,27 +194,19 @@ const Home = () => {
 
                 <div className='my-4'>
                     <div className='w-fit my-10'>
-                        <p className='text-title font-bold text-xl w-fit'>Quán E-Member</p>
+                        <p className='text-title font-bold text-xl w-fit'>QUÁN E-Member</p>
                         <hr className='border-ela border-2 w-1/2 bg-ela' />
                     </div>
                     <div className=' h-[200px] w-full max-w-full mt-6'>
                         <Swiper
                             cssMode={true}
-                            navigation={true}
+                            // navigation={true}
                             slidesPerView={window.innerWidth < 600 ? 1 : (window.innerWidth > 640 ? 3 : 2)}
                             spaceBetween={30}
                             slidesPerGroup={3}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            modules={[Autoplay, Pagination, Navigation]}
+                            pagination
+                            modules={[Pagination]}
                             className="mySwiper"
-                        // autoplay={{
-                        //     delay: 2500,
-                        //     disableOnInteraction: false,
-                        // }}
                         >
                             {
                                 eMemberStores.map((store, index) => {
@@ -242,13 +238,26 @@ const Home = () => {
                 </div>
                 <div className='my-4'>
                     <div className='w-fit my-10'>
+                        <p className='text-title font-bold text-xl w-fit'>CÁC REVIEWS GẦN NHẤT</p>
+                        <hr className='border-ela border-2 w-1/2 bg-ela' />
+                    </div>
+                    <div className='mt-6 mx-auto relative  md:gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                        {reviews.map(item => {
+                            return (
+                                <Review  nameUser = {item.name_user} content={item.content} rating={item.rating} nameStore={item.name_store}/>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className='my-4'>
+                    <div className='w-fit my-10'>
                         <p className='text-title font-bold text-xl w-fit'>CÁC QUÁN MỚI HỢP TÁC</p>
                         <hr className='border-ela border-2 w-1/2 bg-ela' />
                     </div>
                     <div className='mt-6 mx-auto relative  md:gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                         {stores.map(item => {
                             return (
-                                <Store infoStore={item} className='col-span-1'/>
+                                <Store infoStore={item} className='col-span-1' />
                             )
                         })}
                     </div>

@@ -5,6 +5,7 @@ import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react';
+import esinhvien from '../../assets/esinhvien.jpg'
 const Store = ({ infoStore, className }) => {
     // const {  } = props
     useEffect(() => {
@@ -24,9 +25,9 @@ const Store = ({ infoStore, className }) => {
                 </div>
 
                 <img
-                    src={'https://storage.langf.vn/8q5cksbkepg7mq1pzuwto2qyw2r9dadbuy9bcxs36glmemxs9qx73zm937r6bk.png'}
+                    src={esinhvien}
                     alt="default_cover"
-                    className='absolute top-0 left-0 ml-1 mb-1 w-10'
+                    className='absolute top-0 left-0 ml-1 mb-1 mt-1 w-10 h-10 rounded'
                 />
                 <p className='absolute bottom-0 left-0 bg-ela text-white p-1 m-1 rounded'>-10%</p>
 
