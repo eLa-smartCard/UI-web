@@ -117,12 +117,13 @@ export default class ListTable {
         return await Promise.all(list.map(async (review, index) => {
             let user = (await this.getInfoUserById(review.user)).data[0]
             let fstore = (await this.getInfoStoreById(review.fstore)).data[0]
-            // console.log({ user, fstore });
+            console.log({ user, fstore });
             return {
                 content: review.content,
                 rating: review.rating,
                 name_user: user.name || user.email,
-                name_store: fstore.name
+                name_store: fstore.name,
+                slugStore: fstore.slug
             }
 
         }))

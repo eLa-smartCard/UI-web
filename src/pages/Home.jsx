@@ -244,7 +244,7 @@ const Home = () => {
                     <div className='mt-6 mx-auto relative  md:gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
                         {reviews.map(item => {
                             return (
-                                <Review  nameUser = {item.name_user} content={item.content} rating={item.rating} nameStore={item.name_store}/>
+                                <Review  nameUser = {item.name_user} content={item.content} rating={item.rating} nameStore={item.name_store} slugStore={item.slugStore}/>
                             )
                         })}
                     </div>

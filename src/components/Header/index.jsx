@@ -66,9 +66,9 @@ const Header = () => {
                         </select>
                     </div>
                 </div>
-                <a href='https://www.esinhvien.vn/dang-nhap' target='blank' className='hidden lg:block md:bg-ela md:px-2 md:py-2 md:text-white md:rounded'>Đăng nhập</a>
+                <a href='https://my.esinhvien.vn/dang-nhap' target='blank' className='hidden lg:block md:bg-ela md:px-2 md:py-2 md:text-white md:rounded'>Đăng nhập</a>
                 <div className='lg:hidden relative'>
-                    <a href='https://www.esinhvien.vn/dang-nhap' target='blank' className='text-sm cursor-pointer mr-4 text-ela'>Đăng nhập</a>
+                    <a href='https://my.esinhvien.vn/dang-nhap' target='blank' className='text-sm cursor-pointer mr-4 text-ela'>Đăng nhập</a>
                     <button onClick={handleSideBar}>
                         <MenuIcon className='text-ela' />
                     </button>
